@@ -13,16 +13,12 @@ set "INSTALLDIR=C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edi
 set "SAVEDIR=%USERPROFILE%\Documents\My Games\Skyrim Special Edition"
 set "APPDATADIR=%USERPROFILE%\AppData\Local\Skyrim Special Edition"
 
-:: =========================
-:: Ask for Steam path
-:: =========================
+:: Pass Steam Path
 echo Default Steam path: "%STEAMEXE%"
 set /p USERINPUT=Press Enter to accept, or paste a different steam.exe path: 
 if not "%USERINPUT%"=="" set "STEAMEXE=%USERINPUT%"
 
-:: =========================
-:: 0 - Attempt Steam uninstall
-:: =========================
+
 echo.
 echo Attempting Steam uninstall for Skyrim SE (if installed)...
 if exist "%STEAMEXE%" (
@@ -36,9 +32,6 @@ if exist "%STEAMEXE%" (
     timeout /t 3 >nul
 )
 
-:: =========================
-:: 1 - Delete leftover installation files
-:: =========================
 echo.
 echo Deleting SSE installation files ("%INSTALLDIR%")...
 if exist "%INSTALLDIR%" (
@@ -49,9 +42,6 @@ if exist "%INSTALLDIR%" (
 )
 timeout /t 1 >nul
 
-:: =========================
-:: 2 - Delete user saves and configs
-:: =========================
 echo.
 echo Deleting SSE user data ("%SAVEDIR%")...
 if exist "%SAVEDIR%" (
@@ -62,9 +52,6 @@ if exist "%SAVEDIR%" (
 )
 timeout /t 1 >nul
 
-:: =========================
-:: 3 - Delete from AppData
-:: =========================
 echo.
 echo Deleting SSE AppData folder ("%APPDATADIR%")...
 if exist "%APPDATADIR%" (
@@ -75,10 +62,9 @@ if exist "%APPDATADIR%" (
 )
 timeout /t 1 >nul
 
-:: =========================
-:: Finish
-:: =========================
+
 echo.
-echo ========================================
-echo Cleanup complete. Press Enter to exit.
+echo ==========================================
+echo   Cleanup complete. Press Enter to exit.  
+echo ==========================================
 set /p dummy=
